@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-	int empNo = 474918;
+	int empNo = Integer.parseInt(request.getParameter("empNo"));
 	//1. select 쿼리 실행 후 ResultSet 가져오는 기능
 	TitlesDao titlesDao = new TitlesDao();
 	Titles titles = titlesDao.selectTitlesOne(empNo);

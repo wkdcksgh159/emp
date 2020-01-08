@@ -8,7 +8,7 @@ public class Dept_managerDao {
 		//클래스 DBHelper의 값을 저장할 오브젝트 dbHelper 생성
 		DBHelper dbHelper = new DBHelper();
 		//연결정보 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리내용을 저장하기 위한 변수 sql 생성
 		String sql = "select emp_no, dept_no, from_date, to_date FROM dept_manager WHERE dept_no=?";
 		//쿼리를 저장하기 위한 변수 stmt 생성 후 쿼리내용을 저장한 변수 sql를 입력
@@ -39,7 +39,7 @@ public class Dept_managerDao {
 		System.out.println(dept_manager.getToDate());
 		
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		
 		String sql = "INSERT INTO departments(dept_no, from_date, to_date) VALUES (?, ?, ?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class Dept_managerDao {
 		//db불러오기
 		DBHelper dbHelper = new DBHelper();
 		//연결주소, 이름, 비밀번호입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리정보입력 (전체컬럼을 가져오고 limit를 이용 한페이지당 보여줄 개수)
 		String sql = "SELECT dept_no, emp_no, from_date, to_date FROM dept_manager LIMIT ?, ?";
 		//쿼리수정 (limit ? 에 값 입력 beginRow, rowPerPage;
@@ -94,7 +94,7 @@ public class Dept_managerDao {
 		//db 불러오기
 		DBHelper dbHelper = new DBHelper();
 		//연결주소, 이름, 비밀번호 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리정보에 넣을 변수입력 ( 쿼리문 count(*)를 이용 컬럼의 총 개수를 가져옴 
 		String sql = "SELECT count(*) as cnt FROM dept_manager";
 		//쿼리변수를 쿼리정보에 입력

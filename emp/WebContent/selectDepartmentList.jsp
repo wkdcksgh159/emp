@@ -34,6 +34,7 @@
 %>
 	<h1>부서목록</h1>
 	<a href="./insertDepartmentsForm.jsp">부서추가</a>
+	<a href="index.jsp">처음으로</a>
 	<table border="1">
 		<tr>
 			<th>dept_name</th>

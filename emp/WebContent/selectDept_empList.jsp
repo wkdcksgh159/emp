@@ -36,6 +36,7 @@
 	}
 %>
 	<h1>사원목록</h1>
+	<a href="index.jsp">처음으로</a>
 	<table border="1">
 		<tr>
 			<th>사원번호</th>

@@ -7,7 +7,7 @@ public class SalariesDao {
 		//클래스 DBHelper의 값을 저장할 오브젝트 dbHelper 생성
 		DBHelper dbHelper = new DBHelper();
 		//연결정보 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리내용을 저장하기 위한 변수 sql 생성
 		String sql = "select emp_no, salary, from_date, to_date FROM salaries WHERE emp_no=?";
 		//쿼리를 저장하기 위한 변수 stmt 생성 후 쿼리내용을 저장한 변수 sql를 입력

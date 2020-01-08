@@ -60,6 +60,7 @@
 	}
 %>
 	<h1>사원정보</h1>
+	<a href="index.jsp">처음으로</a>
 	<form action="./selectEmployeesList.jsp" method="post">
 		<div>
 			gender : 
@@ -84,6 +85,8 @@
 			<th>emp_no</th>
 			<th>first_name</th>
 			<th>상세보기</th>
+			<th>연봉</th>
+			<th>직책</th>
 		</tr>
 <%
 	for(Employees e : list) {
@@ -92,6 +95,8 @@
 		<td><%=e.getEmpNo() %></td>
 		<td><%=e.getFirstName() %></td>
 		<td><a href="./selectEmployeesOne.jsp?empNo=<%=e.getEmpNo() %>">상세보기</a></td>
+		<td><a href="./selectEmployeesOne.jsp?empNo=<%=e.getEmpNo() %>">연봉</a></td>
+		<td><a href="./selectEmployeesOne.jsp?empNo=<%=e.getEmpNo() %>">직책</a></td>
 	</tr>
 <%
 	}

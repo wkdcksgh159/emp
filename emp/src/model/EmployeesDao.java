@@ -9,7 +9,7 @@ public class EmployeesDao {
 		//클래스 DBHelper의 값을 저장할 오브젝트 dbHelper 생성
 		DBHelper dbHelper = new DBHelper();
 		//연결정보 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리내용을 저장하기 위한 변수 sql 생성
 		String sql = "SELECT emp_no, birth_date, first_name, last_name, gender, hire_date FROM employees WHERE emp_no=?";
 		//쿼리를 저장하기 위한 변수 stmt 생성 후 쿼리내용을 저장한 변수 sql를 입력
@@ -47,7 +47,7 @@ public class EmployeesDao {
 		ArrayList<Employees> list = new ArrayList<Employees>();
 		//db 불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -86,7 +86,7 @@ public class EmployeesDao {
 		ArrayList<Employees> list = new ArrayList<Employees>();
 		//db 불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -126,7 +126,7 @@ public class EmployeesDao {
 		ArrayList<Employees> list = new ArrayList<Employees>();
 		//db 불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -157,7 +157,7 @@ public class EmployeesDao {
 	public int selectEmployeesTotalRow() throws Exception{
 		int totalRow = 0;
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "SELECT count(*) as cnt FROM employees";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
@@ -176,7 +176,7 @@ public class EmployeesDao {
 		System.out.println(employees.getHireDate());
 		//db 불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc.mariadb://127.0.0.1/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		
 		//쿼리정보 입력
 		String sql = "INSERT INTO employees(emp_no, birth_date, first_name, last_name, gender, hire_date) VALUES (?, ?, ?, ?, ?, ?)";
@@ -197,7 +197,7 @@ public class EmployeesDao {
 	public void deleteEmployeesAction(int empNo) throws Exception {
 		//db불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리정보 입력
 		String sql = "DELETE FROM employees WHERE emp_no=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -209,7 +209,7 @@ public class EmployeesDao {
 	public void updateEmployees(Employees employees) throws Exception {
 		//db불러오기
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리정보 입력
 		String sql = "UPDATE employees SET birth_date=?, first_name=?, last_name=?, gender=?, hire_date=? WHERE emp_no=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);

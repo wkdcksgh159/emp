@@ -8,7 +8,7 @@ public class DepartmentsDao {
 		//클래스 DBHelper의 값을 저장할 오브젝트 dbHelper 생성
 		DBHelper dbHelper = new DBHelper();
 		//연결정보 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리문의 내용을 저장할 변수 sql 생성 및 쿼리내용 입력
 		String sql = "select dept_no, dept_name FROM departments WHERE dept_no=?";
 		//쿼리문을 저장할 변수 stmt 를 생성 후 쿼리문의 내용 sql를 입력
@@ -34,7 +34,7 @@ public class DepartmentsDao {
 		System.out.println(departments.getDeptNo());
 		System.out.println(departments.getDeptName());
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "INSERT INTO departments(dept_no, dept_name) VALUES (?, ?)";
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class DepartmentsDao {
 		int beginRow = (currentPage-1) * rowPerPage;
 		ArrayList<Departments> list = new ArrayList<Departments>();
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "SELECT dept_no, dept_name FROM departments LIMIT ?, ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
@@ -72,7 +72,7 @@ public class DepartmentsDao {
 	public int selectDepartmentsTotalRow() throws Exception{
 		int totalRow = 0;
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "SELECT count(*) as cnt FROM departments";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
@@ -84,7 +84,7 @@ public class DepartmentsDao {
 	
 	public void deleteDepartmentsAction(String deptNo) throws Exception {
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "DELETE FROM departments WHERE dept_no=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, deptNo);
@@ -97,7 +97,7 @@ public class DepartmentsDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
-			conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
+			conn = dbHelper.getConnection();
 			String sql = "UPDATE departments SET dept_name=? WHERE dept_no=?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, departments.getDeptName());

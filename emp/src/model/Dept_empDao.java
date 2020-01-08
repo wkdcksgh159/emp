@@ -8,7 +8,7 @@ public class Dept_empDao {
 		//클래스 DBHelper의 값을 저장할 오브젝트 dbHelper 생성
 		DBHelper dbHelper = new DBHelper();
 		//연결정보 입력
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		//쿼리내용을 저장하기 위한 변수 sql 생성
 		String sql = "select de.from_date, de.to_date, de.dept_no, d.dept_name, de.emp_no, e.first_name FROM dept_emp de INNER JOIN departments d INNER JOIN employees e ON de.dept_no = d.dept_no AND de.emp_no = e.emp_no WHERE de.dept_no=? AND de.emp_no=?";
 		//쿼리를 저장하기 위한 변수 stmt 생성 후 쿼리내용을 저장한 변수 sql를 입력
@@ -47,7 +47,7 @@ public class Dept_empDao {
 		int beginRow = (currentPage-1) * rowPerPage;
 		ArrayList<Dept_emp> list = new ArrayList<Dept_emp>();
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1/dept_emp", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "SELECT emp_no, dept_no, from_date, to_date FROM dept_emp LIMIT ?,?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
@@ -68,7 +68,7 @@ public class Dept_empDao {
 	public int selectDept_empTotalRow() throws Exception {
 		int totalRow = 0;
 		DBHelper dbHelper = new DBHelper();
-		Connection conn = dbHelper.getConnection("jdbc:mariadb://127.0.0.1:3306/dept_emp", "root", "java1234");
+		Connection conn = dbHelper.getConnection();
 		String sql = "SELECT count(*) as cnt FROM dept_emp";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
